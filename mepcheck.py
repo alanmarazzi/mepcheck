@@ -9,6 +9,16 @@ import requests
 url = 'http://www.votewatch.eu/actions.php?euro_parlamentar_id={}&form_category=get_mep_acte&sEcho=1&iColumns=6&sColumns=&iDisplayStart=0&iDisplayLength={}&mDataProp_0=mysql_data&mDataProp_1=act_nume_full&mDataProp_2=euro_vot_valoare_special_vote_page&mDataProp_3=euro_vot_rol_euro_grup.rol_af&mDataProp_4=euro_domeniu_nume&mDataProp_5=euro_vot_valoare_text&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&sSearch_3=&bRegex_3=false&bSearchable_3=true&sSearch_4=&bRegex_4=false&bSearchable_4=true&sSearch_5=&bRegex_5=false&bSearchable_5=true&iSortingCols=1&iSortCol_0=0&sSortDir_0=desc&bSortable_0=true&bSortable_1=true&bSortable_2=true&bSortable_3=true&bSortable_4=true&bSortable_5=true&_=1486840527483'
 
 def get_meps(country=None):
+    """Reference list of countries and MEPs and their ids
+    for data retrieval.
+
+    Parameters
+    -----------
+    country: str
+        If None as per default prints a list of available
+        countries, otherwise prints a list of MEPs of the
+        given country.
+    """
     with open('meps', 'rb') as f:
         meps = pickle.load(f)
     if country is not None:
@@ -126,7 +136,7 @@ class EUvotes(object):
                 t.add_row(row)
             print(t)
 
-    def data(self, shape='json', limit=-1):
+    def data_(self, shape='json', limit=-1):
         """Return retrieved data in various formats for
         various possible uses.
 
@@ -140,8 +150,7 @@ class EUvotes(object):
 
         Return
         -------
-        
-
+        json, list or DataFrame depending on `shape` parameter
 
         """
         if shape == 'json':
