@@ -1,4 +1,4 @@
-![alt text](http://i.imgur.com/1m633ei.png "MEPcheck")
+![alt text](http://i.imgur.com/0WoVJru.png "MEPcheck")
 
 # Work in progress
 
