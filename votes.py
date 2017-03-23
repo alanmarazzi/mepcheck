@@ -32,8 +32,17 @@ class EUvotes(object):
     """Retrieve MEP last votes from VoteWatch.eu,
     print them in tabular format and summarize them.
     It is possible to return None by printing via
-    stdout or to return results in a dict format for
+    stdout or to return results in various formats for
     various uses.
+
+    Parameters
+    -----------
+    mep_id: int
+        The id of the MEP you want to check. To see a list
+        of MEPs and their ids use get_meps(country)
+    limit: int
+        The number of votes you want to check, default
+        is 50
 
     """
 
@@ -50,6 +59,7 @@ class EUvotes(object):
         return printing
 
     def _mep_name(self, mep_id):
+        """Get searched MEP name"""
         with open('meps', 'rb') as f:
             meps = pickle.load(f)
         return meps[mep_id - 1][1]
@@ -85,6 +95,20 @@ class EUvotes(object):
         return vote_period
 
     def print_attendance(self, summary=False):
+        """Print retrieved data to stdout in a nice tabular
+        format.
+
+        Parameters
+        -----------
+        summary: bool
+            If True prints a count of votes by tipology and
+            period of time.
+
+        Return
+        --------
+        None
+
+        """
         if summary:
             counts = Counter(zip(self.period, self.absent))
             t = PrettyTable(['Period', 'Vote', 'Count'])
@@ -103,6 +127,23 @@ class EUvotes(object):
             print(t)
 
     def data(self, shape='json', limit=-1):
+        """Return retrieved data in various formats for
+        various possible uses.
+
+        Parameters
+        -----------
+        shape: ['json', 'list', 'df']
+            Decide the format of the returned data.
+        limit: int
+            Get only last x votes retrieved, default is all of them.
+
+
+        Return
+        -------
+        
+
+
+        """
         if shape == 'json':
             js = []
             for day, presence, topic in zip(self.dates[:limit], self.absent[:limit], self.domains[:limit]):
