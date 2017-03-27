@@ -25,12 +25,16 @@ pip install --upgrade -r requirements.txt
 
 After installing you can use **MEPcheck** directly from the command line with
 
-```python
+```bash
 python mepcheck.py # prints available countries
 python mepcheck.py -c spain # prints MEPs from inserted country
 python mepcheck.py --mep 123 # see last 50 votes of a MEP
 python mepcheck.py --mep 123 --limit 10 # limit to last 10 votes
 ```
+
+# From Python
+
+You can import the `mepcheck` module in Python and use it interactively or programmatically:
 
 ```python
 from mepcheck import EUvotes, get_meps
