@@ -11,7 +11,7 @@ To see what's going on at the moment you can check the [**TODO**](https://github
 To try MEPcheck just clone this repo:
 
 ```bash
-git clone http://etc
+git clone https://github.com/alanmarazzi/mepcheck.git
 ```
 
 Then you can install required dependencies:
@@ -55,7 +55,7 @@ print(votes)
 votes.print_attendance(summary=True)
 ```
 
-To use data you can return all retrieved data in various formats: *json*, *list* or if you like in a [pandas](link_to_pandas) *DataFrame*:
+To use data you can return all retrieved data in various formats: *json*, *list* or if you like in a [pandas](http://pandas.pydata.org/) *DataFrame*:
 
 ```python
 votes.data_(shape='list', limit=10)

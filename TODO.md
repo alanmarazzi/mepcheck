@@ -4,6 +4,7 @@
 - [ ] Possibility to change `limit` after initialization
 - [x] Return data in *"tabular"* or json format
 - [x] Return only last X votes
-- [ ] Add CLI
+- [x] Add CLI
 - [x] Initial documentation
 - [ ] Prepare all package boilerplate
+- [ ] Return data from CLI as well
