@@ -20,6 +20,7 @@ def get_meps(country=None):
         If None as per default prints a list of available
         countries, otherwise prints a list of MEPs of the
         given country.
+
     """
     with open('meps', 'rb') as f:
         meps = pickle.load(f)
@@ -59,6 +60,11 @@ class EUvotes(object):
     """
 
     def __init__(self, mep_id, limit=50):
+        """When launching initialization use given data
+        to retrieve all interesting info from Votewatch.eu
+        automatically.
+
+        """
         self.mep_id = mep_id
         self.limit = limit
         self.dates, self.domains, self.absent = self._get_votes(self.mep_id, self.limit)
@@ -77,6 +83,7 @@ class EUvotes(object):
         return meps[mep_id - 1][1]
 
     def _get_votes(self, mep_id, limit):
+        """Get last `limit` votes for requested MEP"""
         r = requests.get(url.format(mep_id, limit))
         data = json.loads(r.text)
         dates = [vote['mysql_data_text'] for vote in data['all_votes']]
@@ -88,13 +95,16 @@ class EUvotes(object):
         return dates, domains, absent
 
     def _to_date(self, dates):
+        """Helper method to convert str to dates"""
         y, m, d = dates.split('-')
         return date(int(y), int(m), int(d))
 
     def _convert_to_date(self, dates):
+        """Convert retrieved str dates to date objects"""
         return [self._to_date(date) for date in dates]
 
     def _last_vote_period(self, dates):
+        """Transform dates to three reference periods"""
         vote_period = []
         for vote in dates:
             period = date.today() - vote
