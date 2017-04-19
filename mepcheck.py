@@ -138,8 +138,8 @@ class EUvotes(object):
             voting = ["Absent", "Loyal", "Rebel", "No political line"]
             for per in [(i, j) for i in periods for j in voting]:
                 t.add_row([per[0], per[1], counts[per]])
-            print("\nCount of last {} votes by period. Percentage of absenteeism: {:.1%}\n".format(
-                  self.limit, Counter(self.absent)[voting[0]] / self.limit))
+            print("\nCount of last {} votes by period for {}. Percentage of absenteeism: {:.1%}\n".format(
+                  self.limit, self.name.title(), Counter(self.absent)[voting[0]] / self.limit))
             print(t)
         else:
             print("Last {} votes attendance for {}".format(self.limit, self.name.title()))

@@ -18,7 +18,7 @@ Then you can install required dependencies:
 
 ```bash
 cd mepcheck
-pip install --upgrade -r requirements.txt
+pip install -r requirements.txt
 ```
 
 # Command Line Interface
@@ -27,9 +27,10 @@ After installing you can use **MEPcheck** directly from the command line with
 
 ```bash
 python mepcheck.py # prints available countries
-python mepcheck.py -c spain # prints MEPs from inserted country
+python mepcheck.py -c spain # prints MEPs from inserted country and their ids
 python mepcheck.py --mep 123 # see last 50 votes of a MEP
 python mepcheck.py --mep 123 --limit 10 # limit to last 10 votes
+python mepcheck.py --mep 123 -s # get a summary by time frame
 ```
 
 # From Python

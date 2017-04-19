@@ -7,4 +7,3 @@
 - [x] Add CLI
 - [x] Initial documentation
 - [ ] Prepare all package boilerplate
-- [ ] Return data from CLI as well
