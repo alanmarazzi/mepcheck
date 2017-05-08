@@ -116,6 +116,13 @@ class EUvotes(object):
                 vote_period.append("More than one month")
         return vote_period
 
+    def change_limit(self, limit=50):
+        print("Updating limit from {} to {}".format(self.limit, limit))
+        self.limit = limit
+        self.dates, self.domains, self.absent = self._get_votes(self.mep_id, self.limit)
+        self.dates = self._convert_to_date(self.dates)
+        self.period = self._last_vote_period(self.dates)
+
     def print_attendance(self, summary=False):
         """Print retrieved data to stdout in a nice tabular
         format.
