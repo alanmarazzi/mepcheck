@@ -6,4 +6,3 @@
 - [x] Return only last X votes
 - [x] Add CLI
 - [x] Initial documentation
-- [ ] Prepare all package boilerplate
