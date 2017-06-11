@@ -2,9 +2,7 @@
 
 # Work in progress
 
-This will become a Python package for easy and automatic retrieval of voting data about MEPs (Members of European Parliament).
-
-To see what's going on at the moment you can check the [**TODO**](https://github.com/alanmarazzi/mepcheck/blob/master/TODO.md) in this repo.
+**MEPcheck** is a Python package for easy and automatic retrieval of voting data about MEPs (Members of European Parliament).
 
 # Try it
 
@@ -70,3 +68,6 @@ I'm open to any kind of contribution: ideas, pull requests and bug signaling are
 
 - [logomakr](https://logomakr.com/)
 - [Votewatch](http://www.votewatch.eu/)
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
+- [requests](http://docs.python-requests.org/en/master/)
+- [prettytable](https://pypi.python.org/pypi/PrettyTable)
