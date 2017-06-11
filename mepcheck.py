@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from collections import Counter
 from datetime import date, timedelta
 import itertools
@@ -22,6 +20,7 @@ def get_meps(country=None):
         given country.
 
     """
+
     with open('meps', 'rb') as f:
         meps = pickle.load(f)
     if country is not None:

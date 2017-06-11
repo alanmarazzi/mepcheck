@@ -7,6 +7,7 @@ import json
 import pickle
 from prettytable import PrettyTable
 import requests
+import os
 
 url = 'http://www.votewatch.eu/actions.php?euro_parlamentar_id={}&form_category=get_mep_acte&sEcho=1&iColumns=6&sColumns=&iDisplayStart=0&iDisplayLength={}&mDataProp_0=mysql_data&mDataProp_1=act_nume_full&mDataProp_2=euro_vot_valoare_special_vote_page&mDataProp_3=euro_vot_rol_euro_grup.rol_af&mDataProp_4=euro_domeniu_nume&mDataProp_5=euro_vot_valoare_text&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&sSearch_3=&bRegex_3=false&bSearchable_3=true&sSearch_4=&bRegex_4=false&bSearchable_4=true&sSearch_5=&bRegex_5=false&bSearchable_5=true&iSortingCols=1&iSortCol_0=0&sSortDir_0=desc&bSortable_0=true&bSortable_1=true&bSortable_2=true&bSortable_3=true&bSortable_4=true&bSortable_5=true&_=1486840527483'
 
@@ -22,24 +23,30 @@ def get_meps(country=None):
         given country.
 
     """
-    with open('meps', 'rb') as f:
-        meps = pickle.load(f)
-    if country is not None:
-        t = PrettyTable(['ID', 'Name', 'Country'])
-        for mep in meps:
-            if mep[2] == country.lower():
-                t.add_row([mep[0], mep[1].title(), mep[2].title()])
-        print(t)
+    meps_path = os.path.expanduser("~/.meps")
+    if os.path.isfile(meps_path):
+        with open(meps_path, 'rb') as f:
+            meps = pickle.load(f)
+        if country is not None:
+            t = PrettyTable(['ID', 'Name', 'Country'])
+            for mep in meps:
+                if mep[2] == country.lower():
+                    t.add_row([mep[0], mep[1].title(), mep[2].title()])
+            print(t)
+        else:
+            print("\nSearch through these countries:\n")
+            countries = []
+            for mep in meps:
+                countries.append(mep[2])
+            countries = set(countries)
+            t = PrettyTable(['Country'])
+            for country in countries:
+                t.add_row([country.title()])
+            print(t)
     else:
-        print("\nSearch through these countries:\n")
-        countries = []
-        for mep in meps:
-            countries.append(mep[2])
-        countries = set(countries)
-        t = PrettyTable(['Country'])
-        for country in countries:
-            t.add_row([country.title()])
-        print(t)
+        from . import savemeps
+        savemeps.save_meps()
+        get_meps(country)
 
 class EUvotes(object):
     """Retrieve MEP last votes from VoteWatch.eu,
