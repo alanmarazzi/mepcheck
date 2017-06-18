@@ -16,7 +16,7 @@ install:
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pandas beautifulsoup4 requests
   - source activate test-environment
   - pip install prettytable
-  - pip install .
+  - python setup.py install
 # command to run tests
 script:
     if [[ $TRAVIS_PYTHON_VERSION < 3.5 ]]; then py.test;else pytest; fi
