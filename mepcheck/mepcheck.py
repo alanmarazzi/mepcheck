@@ -72,8 +72,8 @@ class EUvotes(object):
         automatically.
 
         """
-        self.mep_id = mep_id
-        self.limit = limit
+        self.mep_id = abs(mep_id)
+        self.limit = abs(limit)
         self.dates, self.domains, self.absent = self._get_votes(self.mep_id, self.limit)
         self.dates = self._convert_to_date(self.dates)
         self.period = self._last_vote_period(self.dates)
@@ -85,13 +85,13 @@ class EUvotes(object):
 
     def _mep_name(self, mep_id):
         """Get searched MEP name"""
-        with open('meps', 'rb') as f:
+        with open(os.path.expanduser("~/.meps"), 'rb') as f:
             meps = pickle.load(f)
-        return meps[mep_id - 1][1]
+        return meps[abs(mep_id) - 1][1]
 
     def _get_votes(self, mep_id, limit):
         """Get last `limit` votes for requested MEP"""
-        r = requests.get(url.format(mep_id, limit))
+        r = requests.get(url.format(abs(mep_id), abs(limit)))
         data = json.loads(r.text)
         dates = [vote['mysql_data_text'] for vote in data['all_votes']]
         domains = [domain['euro_domeniu_nume'] for domain in data['all_votes']]
@@ -124,11 +124,8 @@ class EUvotes(object):
         return vote_period
 
     def change_limit(self, limit=50):
-        print("Updating limit from {} to {}".format(self.limit, limit))
-        self.limit = limit
-        self.dates, self.domains, self.absent = self._get_votes(self.mep_id, self.limit)
-        self.dates = self._convert_to_date(self.dates)
-        self.period = self._last_vote_period(self.dates)
+        print("Updating limit from {} to {}".format(self.limit, abs(limit)))
+        self.__init__(self.mep_id, abs(limit))
 
     def print_attendance(self, summary=False):
         """Print retrieved data to stdout in a nice tabular

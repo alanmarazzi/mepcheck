@@ -9,6 +9,5 @@ setup(name="mepcheck",
       license="MIT",
       packages=["mepcheck"],
       zip_safe=False,
-      url = 'https://github.com/alanmarazzi/mepcheck',
       download_url = 'https://github.com/alanmarazzi/mepcheck/archive/master.zip',
       keywords = ['voting', 'data', 'mep'],)
