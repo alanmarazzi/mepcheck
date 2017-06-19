@@ -3,7 +3,7 @@ import pytest
 # from mepcheck import EUvotes, get_meps
 # from mepcheck.savemeps import save_meps
 
-import requests
+#import requests
 from bs4 import BeautifulSoup
 import pickle
 import os
