@@ -1,6 +1,8 @@
 ![alt text](http://i.imgur.com/0WoVJru.png "MEPcheck")
 
-# Work in progress
+[![Build Status](https://travis-ci.org/alanmarazzi/mepcheck.svg?branch=master)](https://travis-ci.org/alanmarazzi/mepcheck)
+
+# What is it
 
 **MEPcheck** is a Python package for easy and automatic retrieval of voting data about MEPs (Members of European Parliament).
 
@@ -12,11 +14,11 @@ To try MEPcheck just clone this repo:
 git clone https://github.com/alanmarazzi/mepcheck.git
 ```
 
-Then you can install required dependencies:
+Then you can install it as a regular package:
 
 ```bash
 cd mepcheck
-pip install -r requirements.txt
+pip install .
 ```
 
 # Command Line Interface
