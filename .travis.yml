@@ -3,7 +3,6 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
-# command to install dependencies
 install:
   # Install miniconda, create env and install dependencies
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
@@ -17,7 +16,6 @@ install:
   - source activate test-environment
   - pip install prettytable
   - pip install .
-  - conda list
-# command to run tests
+  - echo $PYTHONPATH
 script:
     if [[ $TRAVIS_PYTHON_VERSION < 3.5 ]]; then py.test;else pytest; fi
