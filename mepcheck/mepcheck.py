@@ -159,7 +159,7 @@ class EUvotes(object):
                 t.add_row(row)
             print(t)
 
-    def data_(self, shape='json', limit=-1):
+    def data_(self, shape='json', limit=50):
         """Return retrieved data in various formats for
         various possible uses.
 
@@ -168,7 +168,7 @@ class EUvotes(object):
         shape: ['json', 'list', 'df']
             Decide the format of the returned data.
         limit: int
-            Get only last x votes retrieved, default is all of them.
+            Get only last x votes retrieved, default is 50.
 
 
         Return
