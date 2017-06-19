@@ -10,9 +10,8 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda install pandas beautifulsoup4 requests
-#  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pandas beautifulsoup4 requests
-#  - source activate test-environment
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pandas beautifulsoup4 requests
+  - source activate test-environment
   - pip install prettytable
   - pip install .
 script:
