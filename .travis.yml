@@ -14,10 +14,10 @@ install:
   - conda info -a
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pandas beautifulsoup4 requests pytest
   - source activate test-environment
-  - pip install prettytable codecov
+  - pip install prettytable codecov pytest-cov
   - pip install .
 script:
-    if [[ $TRAVIS_PYTHON_VERSION < 3.5 ]]; then py.test;else pytest; fi
+    if [[ $TRAVIS_PYTHON_VERSION < 3.5 ]]; then py.test --cov=./;else pytest --cov=./; fi
 
 after_success:
   - codecov

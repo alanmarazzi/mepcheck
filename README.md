@@ -1,6 +1,6 @@
 ![alt text](http://i.imgur.com/0WoVJru.png "MEPcheck")
 
-[![Build Status](https://travis-ci.org/alanmarazzi/mepcheck.svg?branch=master)](https://travis-ci.org/alanmarazzi/mepcheck)
+[![Build Status](https://travis-ci.org/alanmarazzi/mepcheck.svg?branch=master)](https://travis-ci.org/alanmarazzi/mepcheck) [![codebeat badge](https://codebeat.co/badges/ef1d1338-e6de-49b5-b1d6-da0cba215da9)](https://codebeat.co/projects/github-com-alanmarazzi-mepcheck-master)
 
 # What is it
 
