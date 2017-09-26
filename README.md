@@ -15,10 +15,11 @@ To try MEPcheck just clone this repo (pip package coming soon):
 git clone https://github.com/alanmarazzi/mepcheck.git
 ```
 
-Then you can install it as a regular package:
+Then you can install it as a regular package after installing dependencies:
 
 ```bash
 cd mepcheck
+pip install -r requirements.txt
 pip install .
 ```
 
@@ -65,13 +66,32 @@ votes.data_(shape='list', limit=10)
 
 Note that if you want *DataFrame* you have to install pandas since it is not a requirement.
 
+# Docker
+
+If you want **MEPcheck** to work out of the box and use it from everywhere without messing with your *PATH*, just build it with *Docker*.
+
+The process is:
+
+```bash
+cd mepcheck
+docker build -t mepcheck .
+```
+
+Then just put in your `.bashrc` file:
+
+```bash
+alias mepcheck='sudo docker run --rm mepcheck'
+```
+
+Now either you `source ~/.bashrc` or close and reopen your terminal, at this point you can try it with:
+
+```bash
+mepcheck --mep 123
+```
+
 # Contributing
 
 I'm open to any kind of contribution: ideas, pull requests and bug signaling are welcome.
-
-# Docker
-
-### Soon
 
 ## Thanks to
 

@@ -44,7 +44,7 @@ def get_meps(country=None):
                 t.add_row([country.title()])
             print(t)
     else:
-        from . import savemeps
+        import savemeps
         savemeps.save_meps()
         get_meps(country)
 

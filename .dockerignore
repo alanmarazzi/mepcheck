@@ -1,0 +1,6 @@
+mepcheck.egg-info
+dist
+.coverage
+.gitignore
+.travis.yml
+README.md
