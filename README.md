@@ -5,11 +5,11 @@
 
 # What is it
 
-**MEPcheck** is a Python package for easy and automatic retrieval of voting data about MEPs (Members of European Parliament).
+**MEPcheck** is a Python package for easy and automatic retrieval of voting data about MEPs (Members of European Parliament). Many people complain they don't know what the EU is doing and especially what MEPs from their country are doing. Take control of your representatives and easily show others what's happening in Brussels/Strasbourg!
 
 # Try it
 
-To try MEPcheck just clone this repo:
+To try MEPcheck just clone this repo (pip package coming soon):
 
 ```bash
 git clone https://github.com/alanmarazzi/mepcheck.git
@@ -63,9 +63,15 @@ To use data you can return all retrieved data in various formats: *json*, *list*
 votes.data_(shape='list', limit=10)
 ```
 
+Note that if you want *DataFrame* you have to install pandas since it is not a requirement.
+
 # Contributing
 
 I'm open to any kind of contribution: ideas, pull requests and bug signaling are welcome.
+
+# Docker
+
+### Soon
 
 ## Thanks to
 
