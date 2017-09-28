@@ -9,5 +9,8 @@ setup(name="mepcheck",
       license="MIT",
       packages=["mepcheck"],
       zip_safe=False,
-      download_url = 'https://github.com/alanmarazzi/mepcheck/archive/master.zip',
-      keywords = ['voting', 'data', 'mep'],)
+      download_url='https://github.com/alanmarazzi/mepcheck/archive/master.zip',
+      keywords=['voting', 'data', 'mep'],
+      classifiers=[
+          'Programming Language :: Python :: 3'
+      ])
