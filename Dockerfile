@@ -6,4 +6,4 @@ WORKDIR /mepcheck/mepcheck
 RUN pip install -r ../requirements.txt &&\
     pip install ../.
 
-ENTRYPOINT ["python", "mepcheck.py"]
+ENTRYPOINT ["python", "../mepcheck_docker.py"]

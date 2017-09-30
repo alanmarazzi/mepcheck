@@ -8,6 +8,7 @@ import pickle
 from prettytable import PrettyTable
 import requests
 import os
+from .savemeps import save_meps
 
 url = 'http://www.votewatch.eu/actions.php?euro_parlamentar_id={}&form_category=get_mep_acte&sEcho=1&iColumns=6&sColumns=&iDisplayStart=0&iDisplayLength={}&mDataProp_0=mysql_data&mDataProp_1=act_nume_full&mDataProp_2=euro_vot_valoare_special_vote_page&mDataProp_3=euro_vot_rol_euro_grup.rol_af&mDataProp_4=euro_domeniu_nume&mDataProp_5=euro_vot_valoare_text&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&sSearch_3=&bRegex_3=false&bSearchable_3=true&sSearch_4=&bRegex_4=false&bSearchable_4=true&sSearch_5=&bRegex_5=false&bSearchable_5=true&iSortingCols=1&iSortCol_0=0&sSortDir_0=desc&bSortable_0=true&bSortable_1=true&bSortable_2=true&bSortable_3=true&bSortable_4=true&bSortable_5=true&_=1486840527483'
 
@@ -44,8 +45,7 @@ def get_meps(country=None):
                 t.add_row([country.title()])
             print(t)
     else:
-        import savemeps
-        savemeps.save_meps()
+        save_meps()
         get_meps(country)
 
 class EUvotes(object):
@@ -70,7 +70,6 @@ class EUvotes(object):
         """When launching initialization use given data
         to retrieve all interesting info from Votewatch.eu
         automatically.
-
         """
         self.mep_id = abs(mep_id)
         self.limit = abs(limit)
@@ -85,9 +84,14 @@ class EUvotes(object):
 
     def _mep_name(self, mep_id):
         """Get searched MEP name"""
-        with open(os.path.expanduser("~/.meps"), 'rb') as f:
-            meps = pickle.load(f)
-        return meps[abs(mep_id) - 1][1]
+        meps_path = os.path.expanduser("~/.meps")
+        if os.path.isfile(meps_path):
+            with open(os.path.expanduser(meps_path), 'rb') as f:
+                meps = pickle.load(f)
+            return meps[abs(mep_id) - 1][1]
+        else:
+            save_meps()
+            self._mep_name(mep_id)
 
     def _get_votes(self, mep_id, limit):
         """Get last `limit` votes for requested MEP"""

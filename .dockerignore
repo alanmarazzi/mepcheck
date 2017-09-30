@@ -1,6 +1,10 @@
 mepcheck.egg-info
 dist
+build
+.cache
+.git
 .coverage
 .gitignore
 .travis.yml
 README.md
+pypack.sh

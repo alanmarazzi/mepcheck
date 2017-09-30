@@ -7,3 +7,4 @@ mepcheck.egg-info/
 .coverage
 .meps
 .cache/
+*.sh
