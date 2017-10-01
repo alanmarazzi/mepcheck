@@ -196,8 +196,3 @@ class EUvotes(object):
             return df
         else:
             raise NameError("`shape` argument must be 'json', 'list' or 'df'")
-
-
-if __name__ == '__main__':
-    import mepcheck_cli
-    mepcheck_cli.cli()

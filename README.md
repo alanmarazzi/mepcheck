@@ -9,7 +9,13 @@
 
 # Try it
 
-To try MEPcheck just clone this repo (pip package coming soon):
+To try MEPcheck you can install via pip:
+
+```bash
+pip install mepcheck
+```
+
+Or cloning this GitHub repo:
 
 ```bash
 git clone https://github.com/alanmarazzi/mepcheck.git
@@ -28,11 +34,12 @@ pip install .
 After installing you can use **MEPcheck** directly from the command line with
 
 ```bash
-python mepcheck.py # prints available countries
-python mepcheck.py -c spain # prints MEPs from inserted country and their ids
-python mepcheck.py --mep 123 # see last 50 votes of a MEP
-python mepcheck.py --mep 123 --limit 10 # limit to last 10 votes
-python mepcheck.py --mep 123 -s # get a summary by time frame
+python mepcheckCLI.py # prints available countries
+python mepcheckCLI.py -c spain # prints MEPs from inserted country and their ids
+python mepcheckCLI.py --mep 123 # see last 50 votes of a MEP
+python mepcheckCLI.py --mep 123 --limit 10 # limit to last 10 votes
+python mepcheckCLI.py --mep 123 -s # get a summary by time frame
+python mepcheckCLI.py --mep 123 -d json # get votes in json format
 ```
 
 # From Python
@@ -64,13 +71,19 @@ To use data you can return all retrieved data in various formats: *json*, *list*
 votes.data_(shape='list', limit=10)
 ```
 
-Note that if you want *DataFrame* you have to install pandas since it is not a requirement.
+Note that if you want a *DataFrame* you have to install pandas since it is not a requirement.
+
+You can also increase or decrease the number of votes stored in the **EUvotes** object after initialization:
+
+```python
+votes.change_limit(limit=200)
+```
 
 # Docker
 
 If you want **MEPcheck** to work out of the box and use it from everywhere without messing with your *PATH*, just build it with *Docker*.
 
-The process is:
+The process after cloning this repo is:
 
 ```bash
 cd mepcheck
@@ -80,7 +93,8 @@ docker build -t mepcheck .
 Then just put in your `.bashrc` file:
 
 ```bash
-alias mepcheck='sudo docker run --rm mepcheck'
+# Remember to put `sudo` before the command if you need to
+alias mepcheck='docker run --rm mepcheck'
 ```
 
 Now either you `source ~/.bashrc` or close and reopen your terminal, at this point you can try it with:
