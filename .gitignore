@@ -5,6 +5,5 @@ dist/
 mepcheck.egg-info/
 *.csv
 .coverage
-.meps
 .cache/
 *.sh

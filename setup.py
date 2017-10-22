@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name="mepcheck",
-      version="0.0.2",
+      version="0.1.0",
       description="Retrieve voting data for all MEPs and return them in a structured way",
       url="https://github.com/alanmarazzi/mepcheck",
       author="Alan Marazzi",
@@ -15,7 +15,7 @@ setup(name="mepcheck",
           ],
       zip_safe=False,
       download_url='https://github.com/alanmarazzi/mepcheck/archive/master.zip',
-      keywords=['voting', 'data', 'mep'],
+      keywords=['voting', 'vote', 'data', 'mep', 'scraping', 'api'],
       classifiers=[
           'Programming Language :: Python :: 3',
           'Programming Language :: Python :: 3.4',
