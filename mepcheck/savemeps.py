@@ -24,3 +24,7 @@ def save_meps():
     with open(meps_path, 'wb') as f:
         pickle.dump(idx, f, -1)
     print("File `.meps` generated in home directory")
+
+
+if __name__ == '__main__':
+    save_meps()
