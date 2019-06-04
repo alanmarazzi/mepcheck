@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name="mepcheck",
-      version="0.1.0",
+      version="0.2.0",
       description="Retrieve voting data for all MEPs and return them in a structured way",
       url="https://github.com/alanmarazzi/mepcheck",
       author="Alan Marazzi",
