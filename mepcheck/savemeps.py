@@ -4,7 +4,8 @@ import pickle
 import os
 
 def save_meps():
-    url = "http://www.votewatch.eu//en/term8-european-parliament-members.html?limit=804"
+    # TODO - make this configurable
+    url = "http://www.votewatch.eu//en/term9-european-parliament-members.html?limit=1000"
     path = os.path.expanduser("~")
 
     r = requests.get(url)
